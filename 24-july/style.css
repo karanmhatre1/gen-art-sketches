@@ -1,0 +1,19 @@
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+}
+
+#myCanvas {
+  background-color: #fff;
+  width: 600px;
+  height: 600px;
+}
