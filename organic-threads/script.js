@@ -24,17 +24,18 @@ y = [];
 // project.clear();
 
 var radiusScale = 5+Math.random()*10;
-var startPointX = 100-Math.random()*200;
-var startPointY = 100-Math.random()*200;
+var startPointX = getRandomInt(canvasWidth/100, canvasWidth);
+var startPointY = getRandomInt(canvasHeight/100, canvasHeight);
 var count = 50+Math.random()*150;
 var lineCount = 5+Math.random()*25;
+
 
 bend = 5;
 bendOffset = 2.5;
 
 for(i=0;i<lineCount;i++) {
-  x[i] = 300-startPointX;
-  y[i] = 300-startPointY;
+  x[i] = startPointX;
+  y[i] = startPointY;
 }
 
 var TimeCounter = 0;
@@ -79,8 +80,8 @@ view.onFrame = function(e) {
     TimeCounter = 0;
 
     radiusScale = 5+Math.random()*10;
-    startPointX = 100-Math.random()*200;
-    startPointY = 100-Math.random()*200;
+    startPointX = getRandomInt(canvasWidth/100, canvasWidth);
+    startPointY = getRandomInt(canvasHeight/100, canvasHeight);
     count = 50+Math.random()*150;
     lineCount = 5+Math.random()*25;
 
@@ -88,8 +89,8 @@ view.onFrame = function(e) {
     bendOffset = 2.5;
 
     for(i=0;i<lineCount;i++) {
-      x[i] = 300-startPointX;
-      y[i] = 300-startPointY;
+      x[i] = startPointX;
+      y[i] = startPointY;
     }
   }
     
