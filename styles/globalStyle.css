@@ -4,6 +4,7 @@ body {
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
   color: #111;
+  background-color: #f9f9f9;
 }
 
 ul {
@@ -16,12 +17,17 @@ a {
   color: inherit;
 }
 
+header h1 a {
+  text-decoration: none;
+}
+
 h1 {
   font-size: 24px;
 }
 
 h2 {
   font-size: 32px;
+  margin-bottom: 0;
 }
 
 h3 {
@@ -34,9 +40,18 @@ p {
   line-height: 150%;
 }
 
+.project-details p {
+  max-width: 600px;
+}
+
 .container {
   max-width: 900px;
   padding: 0 100px;
+}
+
+.about-section img {
+  max-width: 600px;
+  margin-top: 50px;
 }
 
 header.container {
@@ -75,7 +90,19 @@ header ul {
 }
 
 #myCanvas {
+  margin-bottom: 50px;
+}
 
+.project-details img, .project-details video {
+  margin-bottom: 50px;
+}
+
+.project-details p {
+  margin-bottom: 25px;
+}
+
+.project-details iframe {
+  margin-bottom: 50px;
 }
 
 @media only screen and (max-width: 600px) {
