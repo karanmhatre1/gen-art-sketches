@@ -126,5 +126,9 @@ header ul {
   header ul li {
     margin-bottom: 10px;
   }
+
+  .container.project-details img, .container.project-details video {
+    max-width: 100%;
+  }
 }
 
