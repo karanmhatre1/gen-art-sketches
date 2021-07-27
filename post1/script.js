@@ -1,7 +1,7 @@
 
-var rowCount = 80;
+var rowCount = 40;
 
-var offset = 100;
+var offset = 50;
 
 var canvasWidth = view.size.width; 
 var canvasHeight = view.size.height;
@@ -64,14 +64,14 @@ var mover2 = new Path.Circle([300,200], 5);
 
 view.onFrame = function(e) {
 
-  if(e.count%1==0) {
-    mover.position.x+=Math.sin(e.count*0.1)*20;
-    mover.position.y+=Math.cos(e.count*0.1)*20;
-    movePoints(mover.position);
+  // if(e.count%1==0) {
+  //   mover.position.x+=Math.sin(e.count*0.1)*20;
+  //   mover.position.y+=Math.cos(e.count*0.1)*20;
+  //   movePoints(mover.position);
 
-    // mover2.position.x+=(moveOffset/2-Math.random()*moveOffset);
-    // mover2.position.y+=(moveOffset/2-Math.random()*moveOffset);
-    // movePoints(mover2.position);
-  }
+  //   // mover2.position.x+=(moveOffset/2-Math.random()*moveOffset);
+  //   // mover2.position.y+=(moveOffset/2-Math.random()*moveOffset);
+  //   // movePoints(mover2.position);
+  // }
   // project.clear();
 } 
