@@ -114,13 +114,28 @@ header ul {
   margin-bottom: 25px;
 }
 
-.project-details iframe {
+.iframe-container {
+  width: 600px;
+  padding-top: 65%;
+  position: relative;
   margin-bottom: 50px;
+}
+
+.iframe-container iframe {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 100%;
 }
 
 @media only screen and (max-width: 600px) {
   .container {
     padding: 0 20px;
+  }
+
+  .iframe-container {
+    width: 100%;
   }
 
   header.container {
