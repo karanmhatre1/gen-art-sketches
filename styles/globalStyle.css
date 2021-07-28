@@ -105,6 +105,12 @@ header ul {
   margin-bottom: 50px;
 }
 
+#canvasContainer {
+  width: 600px;
+  height: 600px;
+  margin-bottom: 50px;
+}
+
 .project-details img, .project-details video {
   width: 100%;
   margin-bottom: 50px;
