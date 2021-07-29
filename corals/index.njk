@@ -1,0 +1,42 @@
+---
+tags: post
+title: "Corals"
+thumbnailSrc: "https://res.cloudinary.com/dgksx9vlc/video/upload/c_scale,h_609/v1627395865/createwithcode/flower-2/Screen_Recording_2021-07-27_at_7.28.21_PM_u96oc0.mp4"
+thumbnailType: "vid"
+date: 2021-07-27
+description: "Representing the deep seas and the bright glows of the endangered corals."
+---
+
+{% extends "_includes/postlayout.njk" %}
+
+{% block scripts %}
+  {{ super() }}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.7/dat.gui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.15/paper-full.min.js"></script>
+  <script type="text/paperscript" canvas="myCanvas" src="./script.js"></script>
+{% endblock %}
+
+{% block styles %}
+  {{ super() }}
+  <link rel="stylesheet" href="./style.css">
+{% endblock %}
+
+{% block content %}
+  <div class="container project-details">
+    
+    {% include "_includes/projectDescription.njk" %}
+    
+    <ul class="project-links">
+      <li><a href="https://github.com/karanmhatre1/generative-corals" target="_blank">GitHub Repo</a></li>
+      <li><a href="/corals-fullscreen">Fullscreen</a></li>
+    </ul>
+    <p>Press [R] to regenerate. Press [P] to download PNG.</p>
+    <canvas id="myCanvas"></canvas>
+    <p>Below are four posters created with outputs from the above sketch.</p>
+    <img src="https://res.cloudinary.com/dgksx9vlc/image/upload/v1627396008/createwithcode/flower-2/A4_-_34_j5k5u2.png" alt="">
+    <img src="https://res.cloudinary.com/dgksx9vlc/image/upload/v1627396010/createwithcode/flower-2/A4_-_33_qbndyl.png" alt="">
+    <video src="https://res.cloudinary.com/dgksx9vlc/video/upload/v1627395838/createwithcode/flower-2/Screen_Recording_2021-07-27_at_7.27.09_PM_gnvibt.mov" controls></video>
+    <video src="https://res.cloudinary.com/dgksx9vlc/video/upload/v1627395831/createwithcode/flower-2/Screen_Recording_2021-07-27_at_7.25.16_PM_aemgjb.mov" controls></video>
+    <video src="https://res.cloudinary.com/dgksx9vlc/video/upload/v1627395865/createwithcode/flower-2/Screen_Recording_2021-07-27_at_7.28.21_PM_u96oc0.mov" controls></video>
+  </div>
+{% endblock %}

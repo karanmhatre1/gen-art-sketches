@@ -1,0 +1,50 @@
+---
+tags: post
+title: "Binary Sync"
+thumbnailSrc: "https://res.cloudinary.com/dgksx9vlc/video/upload/v1627491545/createwithcode/binary-beats/binary-beats-short_j0q9ez.mov"
+thumbnailType: "vid"
+date: 2021-07-29
+tools: p5.js, p5.sound.js
+description: "Mapping audio data to binary visuals to create audio reactive art."
+---
+
+{% extends "_includes/postlayout.njk" %}
+
+{% block scripts %}
+  {{ super() }}
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.js"></script>
+  <script src="./script.js"></script>
+{% endblock %}
+
+{% block styles %}
+  {{ super() }}
+  <link rel="stylesheet" href="./style.css">
+{% endblock %}
+
+{% block content %}
+  <div class="container project-details">
+    
+    {% include "_includes/projectDescription.njk" %}
+
+    <ul class="project-links">
+      <li><a href="/binary-sync-fs">Fullscreen View</a></li>
+    </ul>
+    <p><b>Click the empty black box below to start the visuals. Move your mouse up and down to change the cutoff threshold for white and dark lines.</b></p>
+    <div id="canvasContainer"></div>
+    <p>Music: Another Wave Spiral Universe by Humanfobia</p>
+    <p>Visuals are being rendered real-time processing of audio data to create dynamic visuals.</p>
+    <div class="iframe-container">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/JC4iGftuw5s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="iframe-container">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/VCJWzFcSeN4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="iframe-container">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/YPWw2fOdjWA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="iframe-container">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/u3j_mQzV51A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+{% endblock %}

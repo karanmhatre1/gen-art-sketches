@@ -1,0 +1,35 @@
+---
+tags: post
+title: "Pixel Bends"
+thumbnailSrc: "https://res.cloudinary.com/dgksx9vlc/video/upload/c_scale,vc_h264,w_450/v1627380459/Screen_Recording_2021-07-23_at_11.26.21_AM_c9xyie.mp4"
+thumbnailType: "vid"
+date: 2021-07-22
+description: "Stretch pixels starting on an arc and end to towards the end of the circle. Use multiple layers to add more variance."
+---
+
+{% extends "_includes/postlayout.njk" %}
+
+{% block scripts %}
+  {{ super() }}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.7/dat.gui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.15/paper-full.min.js"></script>
+  <script type="text/paperscript" canvas="myCanvas" src="./script.js"></script>
+{% endblock %}
+
+{% block styles %}
+  {{ super() }}
+  <link rel="stylesheet" href="./style.css">
+{% endblock %}
+
+{% block content %}
+  <div class="container project-details">
+    {% include "_includes/projectDescription.njk" %}
+    <p>[1], [2] on the keyboard to zoom in and zoom out. [3], [4] to change colors. [5] to rotate.</p>
+    <canvas id="myCanvas"></canvas>
+    <iframe width="600" height="360" src="https://www.youtube-nocookie.com/embed/E6ejChNPRgM?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <img src="https://res.cloudinary.com/dgksx9vlc/image/upload/v1627384583/createwithcode/pixel-bends/A4_-_16_xomnuh.png" alt="">
+    <img src="https://res.cloudinary.com/dgksx9vlc/image/upload/v1627384583/createwithcode/pixel-bends/A4_-_15_wpnqef.png" alt="">
+    <img src="https://res.cloudinary.com/dgksx9vlc/image/upload/v1627384584/createwithcode/pixel-bends/A4_-_14_ryxbgp.png" alt="">
+    <img src="https://res.cloudinary.com/dgksx9vlc/image/upload/v1627384584/createwithcode/pixel-bends/A4_-_13_vbqwki.png" alt="">
+  </div>
+{% endblock %}
