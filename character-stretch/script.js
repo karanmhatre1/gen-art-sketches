@@ -3,7 +3,7 @@ var params = {
   gap: 50,
   height: 50,
   stick: 0.5,
-  shadow: 0
+  shadow: 64
 };
 
 var controls = new dat.GUI();

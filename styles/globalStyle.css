@@ -25,12 +25,16 @@ h3 { font-size: 18px; }
 
 p {
   max-width: 600px;
-  margin: 14px 0;
+  margin: 0;
   line-height: 150%;
 }
 
 .project-details p {
   max-width: 600px;
+}
+
+.project-details h2 {
+  margin-bottom: 20px;
 }
 
 .container {
@@ -102,7 +106,7 @@ header ul {
 }
 
 #myCanvas, #canvasContainer {
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 .project-details img, .project-details video {
