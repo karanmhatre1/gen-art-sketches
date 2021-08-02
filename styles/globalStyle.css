@@ -129,6 +129,14 @@ header ul {
   height: 100%;
 }
 
+.iframe-container video {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  /* height: 100%; */
+}
+
 @media only screen and (max-width: 600px) {
   .container {
     padding: 0 20px;
