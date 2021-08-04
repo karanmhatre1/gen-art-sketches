@@ -1,0 +1,17 @@
+#canvasContainer {
+  width: 600px;
+  height: 600px;
+  justify-content: center;
+  background-color: #fff;
+}
+
+#rectSelector {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  border: 1px dashed #000;
+}
+
+.inputs {
+  margin-bottom: 20px;
+}
