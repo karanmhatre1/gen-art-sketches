@@ -1,45 +1,46 @@
-var img;
+// Power (p5.js)
+// Original: https://editor.p5js.org/one-generated-pixel/sketches/4BhR9B8E9
+// The canvas mounts into #sketch-container on the page.
 
+let colorSet = [
+    ['#002366','#0F52BA', '#FA8072','#FFDAB9'],
+    ['#03256C','#2541B2','#1768AC','#E5D549'],
+    ['#FBE6C2','#F0C929','#F48B29','#AC0D0D'],
+    ['#FAAD80','#FF6767','#FF3D68','#A73489']
+];
+              
 function setup() {
-  var container = document.getElementById('canvasContainer');
-  var myCanvas = createCanvas(container.offsetWidth, container.offsetHeight, WEBGL);
-  myCanvas.parent("canvasContainer");
-  pixelDensity(2.0);
+  createCanvas(600, 600).parent('sketch-container');
+  noLoop();
 }
 
 function draw() {
-  background(0);
-
-  // orbitControl();
-
+  
+  colors = random(colorSet);
+  
+  background(255);
+  
   noStroke();
-  let dirX = (mouseX / width - 0.5) * 2;
-  let dirY = (mouseY / height - 0.5) * 2;
-  directionalLight(100, 100, 100, -dirX, -dirY, -1);
-  ambientLight(200);
-
-  camera(0, -300, 300, 0, 0, 50, 0, 1, 0);
-  // orbitalControl();
-
-  // lights();
-
-  // ambientMaterial(255, 0, 255);
-
-  // texture(img);
-  // textureMode(NORMAL);
-  // textureWrap(MIRROR);
-
-  rotateY(frameCount*0.02);
-  translate(sin(frameCount)*20,0,0);
-
-  for(j=1;j<25;j++) {
-    for(i=1;i<25;i++) {
-      push();
-      ambientMaterial(map(i,1,25,0,255), 0, 100);
-      translate(-150+i*12, sin(i+j+frameCount*0.09)*50, j*12-160);
-      box(60*sin(i*2+j*4+frameCount*0.02));
-      pop();
-    }
+  // rectMode(CENTER);
+  
+  count = random(2,50);
+  
+  step = ceil(height/count);
+  
+  for(i=0;i<=count;i++) {
+    fill(random(colors));
+    rect(0,i*step,width, step);
   }
+  
+  translate(width, 250);
+  rotate(HALF_PI);
+  
+  for(i=0;i<count;i++) {
+    fill(random(colors));
+    rect(0,i*step*random(0.1,0.8),width, step);
+  }
+}
 
+function keyPressed() {
+  redraw();
 }

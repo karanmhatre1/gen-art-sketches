@@ -1,17 +1,10 @@
-#canvasContainer {
-  width: 600px;
-  height: 600px;
-  justify-content: center;
-  background-color: #fff;
+#sketch-container {
+  max-width: 600px;
+  margin-bottom: 1rem;
 }
 
-#rectSelector {
-  width: 100px;
-  height: 100px;
-  position: absolute;
-  border: 1px dashed #000;
-}
-
-.inputs {
-  margin-bottom: 20px;
+#sketch-container canvas {
+  display: block;
+  max-width: 100%;
+  height: auto !important; /* keep the square ratio when shrunk on narrow screens */
 }

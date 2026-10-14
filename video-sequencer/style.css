@@ -1,17 +1,12 @@
-#canvasContainer {
-  width: 600px;
-  height: 600px;
-  justify-content: center;
-  background-color: #fff;
+#sketch-container {
+  width: 100%;
+  max-width: 600px;
+  aspect-ratio: 1;
+  background: #000;
+  margin-bottom: 1rem;
 }
 
-#rectSelector {
-  width: 100px;
-  height: 100px;
-  position: absolute;
-  border: 1px dashed #000;
-}
-
-.inputs {
-  margin-bottom: 20px;
+#sketch-container canvas {
+  display: block;
+  max-width: 100%;
 }

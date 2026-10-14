@@ -1,45 +1,69 @@
-var img;
+// Matter Grid (p5.js)
+// Original: https://editor.p5js.org/one-generated-pixel/sketches/96x8QS7sg
+// The canvas mounts into #sketch-container on the page.
+
+let count = 0;
+let scale = 40;
 
 function setup() {
-  var container = document.getElementById('canvasContainer');
-  var myCanvas = createCanvas(container.offsetWidth, container.offsetHeight, WEBGL);
-  myCanvas.parent("canvasContainer");
-  pixelDensity(2.0);
+  createCanvas(600, 600).parent('sketch-container');
+  seed = [random(1000),random(1000),random(1000),random(1000),random(1000),random(1000),random(1000),random(1000),random(1000)];
+  background(255);
+
+  drawRect();
+  // noFill();
+}
+
+function drawRect() {
+  noStroke();
+  fill(255,255,0);
+  rect(200,200,100,50);
+  rect(430,400,50,150);  
 }
 
 function draw() {
-  background(0);
+  
+  r = 50-count;
+  
+  noFill();
+  stroke(0);
+  
+  if(r>20) {
+     for(j=0;j<3;j++) {
+      for(k=0;k<3;k++) {
+        start = {
+          x: 100+200*j,
+          y: 100+200*k
+        }
 
-  // orbitControl();
+        beginShape();
+        xoff = 0;
 
-  noStroke();
-  let dirX = (mouseX / width - 0.5) * 2;
-  let dirY = (mouseY / height - 0.5) * 2;
-  directionalLight(100, 100, 100, -dirX, -dirY, -1);
-  ambientLight(200);
+        for(i=0;i<PI*200;i++) {
+          sin_a = sin(i/100);
+          cos_a = cos(i/100)*1.2;
+          noiseVal = map(noise(sin_a + 1, cos_a + 1, seed[j*3+k]),0,1,-r*0.5,r*0.5);
+          x = start.x+sin_a*(r+noiseVal);
+          y = start.y+cos_a*(r+noiseVal);
+          curveVertex(x,y);
+          xoff+=0.01;
+        }
 
-  camera(0, -300, 300, 0, 0, 50, 0, 1, 0);
-  // orbitalControl();
+        seed[j*3+k]+=0.01;
 
-  // lights();
-
-  // ambientMaterial(255, 0, 255);
-
-  // texture(img);
-  // textureMode(NORMAL);
-  // textureWrap(MIRROR);
-
-  rotateY(frameCount*0.02);
-  translate(sin(frameCount)*20,0,0);
-
-  for(j=1;j<25;j++) {
-    for(i=1;i<25;i++) {
-      push();
-      ambientMaterial(map(i,1,25,0,255), 0, 100);
-      translate(-150+i*12, sin(i+j+frameCount*0.09)*50, j*12-160);
-      box(60*sin(i*2+j*4+frameCount*0.02));
-      pop();
-    }
+        endShape(CLOSE);
+      }
+    }  
+  }
+  
+  count++;
+  
+  if(r<-40) {
+    count = 0;
+    seed = [random(1000),random(1000),random(1000),random(1000),random(1000),random(1000),random(1000),random(1000),random(1000)];
+    background(255);
+    
+    drawRect();
   }
 
 }

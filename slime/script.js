@@ -1,45 +1,50 @@
-var img;
+// Slime (p5.js)
+// Original: https://editor.p5js.org/one-generated-pixel/sketches/7UDSH4Fli
+// The canvas mounts into #sketch-container on the page.
+
+let count = 0;
+let scale = 40;
 
 function setup() {
-  var container = document.getElementById('canvasContainer');
-  var myCanvas = createCanvas(container.offsetWidth, container.offsetHeight, WEBGL);
-  myCanvas.parent("canvasContainer");
-  pixelDensity(2.0);
+  createCanvas(600, 600).parent('sketch-container');
+  seed = random(1000);
+  background(255);
+  fill(255);
 }
 
 function draw() {
-  background(0);
-
-  // orbitControl();
-
-  noStroke();
-  let dirX = (mouseX / width - 0.5) * 2;
-  let dirY = (mouseY / height - 0.5) * 2;
-  directionalLight(100, 100, 100, -dirX, -dirY, -1);
-  ambientLight(200);
-
-  camera(0, -300, 300, 0, 0, 50, 0, 1, 0);
-  // orbitalControl();
-
-  // lights();
-
-  // ambientMaterial(255, 0, 255);
-
-  // texture(img);
-  // textureMode(NORMAL);
-  // textureWrap(MIRROR);
-
-  rotateY(frameCount*0.02);
-  translate(sin(frameCount)*20,0,0);
-
-  for(j=1;j<25;j++) {
-    for(i=1;i<25;i++) {
-      push();
-      ambientMaterial(map(i,1,25,0,255), 0, 100);
-      translate(-150+i*12, sin(i+j+frameCount*0.09)*50, j*12-160);
-      box(60*sin(i*2+j*4+frameCount*0.02));
-      pop();
-    }
+  r = 100+mouseX*0.2;
+  start = {
+    x: width/2,
+    y: -50
   }
+  
+  beginShape();
+  
+  xoff = 0;
 
+  for(i=0;i<PI*200;i++) {
+    sin_a = sin(i/100);
+    cos_a = cos(i/100);
+    noiseVal = map(noise(sin_a + 1, cos_a + 1, seed),0,1,-r*0.5,r*0.5);
+    x = start.x+sin_a*(r+noiseVal);
+    y = start.y+cos_a*(r+noiseVal)+count;
+    vertex(x,y);
+    xoff+=0.1;
+  } 
+  
+  endShape(CLOSE); 
+  
+  seed+=0.01;
+  count+=1;
+
+  if(count > 940) {
+    background(255);
+    count = 0;
+    seed = random(1000);
+  }
+}
+
+function keyPressed() {
+  redraw();
 }

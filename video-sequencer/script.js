@@ -1,45 +1,45 @@
-var img;
+/*
+  Video Sequencer (p5.js, instance mode so it can live inside the page)
+  Click on the sketch to sample a part of the video. Left to right represents
+  different parts of the video and top to bottom represents how much of that
+  part is sampled.
+  Original: https://editor.p5js.org/one-generated-pixel/sketches/g1OOVyBtl
+*/
+new p5((p) => {
+  const MAX_SIZE = 600;
+  const VIDEO_URL = 'https://res.cloudinary.com/dgksx9vlc/video/upload/v1628776782/createwithcode/video_beats/The_Pink_Panther_in_-A_Fly_in_the_Pink_lmhbyf.mp4';
+  const container = document.getElementById('sketch-container');
 
-function setup() {
-  var container = document.getElementById('canvasContainer');
-  var myCanvas = createCanvas(container.offsetWidth, container.offsetHeight, WEBGL);
-  myCanvas.parent("canvasContainer");
-  pixelDensity(2.0);
-}
+  let vid;
+  let playing = false;
+  let xPos = 20;
+  let yPos = 20;
 
-function draw() {
-  background(0);
+  const canvasSize = () => Math.min(container.clientWidth, MAX_SIZE);
 
-  // orbitControl();
+  p.setup = () => {
+    p.createCanvas(canvasSize(), canvasSize());
+    vid = p.createVideo(VIDEO_URL, () => {
+      playing = true;
+      vid.volume(0.4);
+    });
+    vid.hide();
+    p.background(0);
+  };
 
-  noStroke();
-  let dirX = (mouseX / width - 0.5) * 2;
-  let dirY = (mouseY / height - 0.5) * 2;
-  directionalLight(100, 100, 100, -dirX, -dirY, -1);
-  ambientLight(200);
+  p.draw = () => {
+    if (p.frameCount % xPos === 0) vid.time(yPos);
+    if (playing) p.image(vid, 0, 0, p.width, p.height);
+  };
 
-  camera(0, -300, 300, 0, 0, 50, 0, 1, 0);
-  // orbitalControl();
+  p.mousePressed = () => {
+    // p5 reports presses anywhere on the page; only react to clicks on the canvas
+    const inside = p.mouseX >= 0 && p.mouseX <= p.width && p.mouseY >= 0 && p.mouseY <= p.height;
+    if (!inside) return;
+    vid.loop();
+    xPos = p.floor(p.map(p.mouseY, 0, p.height, 2, 50));
+    yPos = p.floor(p.map(p.mouseX, 0, p.width, 2, 300));
+  };
 
-  // lights();
-
-  // ambientMaterial(255, 0, 255);
-
-  // texture(img);
-  // textureMode(NORMAL);
-  // textureWrap(MIRROR);
-
-  rotateY(frameCount*0.02);
-  translate(sin(frameCount)*20,0,0);
-
-  for(j=1;j<25;j++) {
-    for(i=1;i<25;i++) {
-      push();
-      ambientMaterial(map(i,1,25,0,255), 0, 100);
-      translate(-150+i*12, sin(i+j+frameCount*0.09)*50, j*12-160);
-      box(60*sin(i*2+j*4+frameCount*0.02));
-      pop();
-    }
-  }
-
-}
+  p.windowResized = () => p.resizeCanvas(canvasSize(), canvasSize());
+}, document.getElementById('sketch-container'));

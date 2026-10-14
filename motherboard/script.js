@@ -1,45 +1,48 @@
-var img;
+// Motherboard (p5.js)
+// Original: https://editor.p5js.org/one-generated-pixel/sketches/ii5VeC120
+// The canvas mounts into #sketch-container on the page.
+
+let colorSet = [
+    ['#002366','#0F52BA', '#FA8072','#FFDAB9'],
+    ['#FAAD80','#FF6767','#FF3D68','#A73489']
+];
+
+let count = 0;
 
 function setup() {
-  var container = document.getElementById('canvasContainer');
-  var myCanvas = createCanvas(container.offsetWidth, container.offsetHeight, WEBGL);
-  myCanvas.parent("canvasContainer");
-  pixelDensity(2.0);
+  createCanvas(600, 600).parent('sketch-container');
+  // noLoop();
+  // frameRate(10);
+  noStroke();
 }
 
 function draw() {
-  background(0);
+  
+  if(frameCount%20==0) {
+   count=random(10,50);
 
-  // orbitControl();
+    step = width/count;
 
-  noStroke();
-  let dirX = (mouseX / width - 0.5) * 2;
-  let dirY = (mouseY / height - 0.5) * 2;
-  directionalLight(100, 100, 100, -dirX, -dirY, -1);
-  ambientLight(200);
+    colors = random(colorSet);
 
-  camera(0, -300, 300, 0, 0, 50, 0, 1, 0);
-  // orbitalControl();
+    background(random(colors));
 
-  // lights();
+    ellipseMode(CORNER);
 
-  // ambientMaterial(255, 0, 255);
-
-  // texture(img);
-  // textureMode(NORMAL);
-  // textureWrap(MIRROR);
-
-  rotateY(frameCount*0.02);
-  translate(sin(frameCount)*20,0,0);
-
-  for(j=1;j<25;j++) {
-    for(i=1;i<25;i++) {
-      push();
-      ambientMaterial(map(i,1,25,0,255), 0, 100);
-      translate(-150+i*12, sin(i+j+frameCount*0.09)*50, j*12-160);
-      box(60*sin(i*2+j*4+frameCount*0.02));
-      pop();
-    }
+    for(i=0;i<count;i++) {
+      for(j=0;j<count;j++) {
+        fill(random(colors))
+        rect(i*step,j*step,random(0,step)); 
+        fill(random(colors));
+        // rotate(PI);
+        circle(i*step,j*step,random(0,step)); 
+      }
+    } 
   }
+  
+  // saveCanvas('myCanvas', 'png');
+}
 
+function keyPressed() {
+  redraw();
 }
